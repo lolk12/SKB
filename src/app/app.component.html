@@ -1,0 +1,31 @@
+<div class="container">
+    <md-form-field>
+        <input type="text" placeholder="Город" mdInput [formControl]="myControl" [mdAutocomplete]="auto">
+        <md-hint align="start" *ngIf="(!myControl.value)"><strong>Начните вводить название</strong> </md-hint>
+        <md-autocomplete #auto="mdAutocomplete">
+
+            <md-option *ngFor="let city of filteredCitys | async" [value]="city.City">
+                {{ city.City }}
+            </md-option>
+            <p *ngIf="lengthOption > 5">Показанно 5 из {{lengthOption}} найденых городов Уточните запрос, чтобы увидеть остальные</p>
+
+            <md-option *ngIf="lengthOption === 0 && okSearch">
+                Не найдено
+            </md-option>
+
+            <div *ngIf="!okSearch">
+                <p >Что-то пошло не так. Проверьте соединение с интернетом и попробуйте еще раз</p>
+                <md-option>
+                    <button (click)=" getDataServer(); ">Обновить</button>
+                </md-option>
+            </div>
+
+        </md-autocomplete>
+
+        <div id="loader" *ngIf="!wait">
+            <div id="shadow"></div>
+            <div id="box"></div>
+        </div>
+    </md-form-field>
+
+</div>

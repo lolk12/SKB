@@ -1,0 +1,34 @@
+@import "assets/loader.css"
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming'
+
+
+body
+  font-family: Segoe UI, Ubuntu !important
+  color: #404040 !important
+  line-height: 20px !important
+
+p
+  padding: 3px 15px
+
+
+@include mat-core()
+
+$dark-primary: mat-palette($mat-light-blue, 900)
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400)
+$dark-warn:    mat-palette($mat-deep-orange)
+$dark-theme:   mat-light-theme($dark-primary, $dark-accent, $dark-warn)
+@include angular-material-theme($dark-theme)
+
+$custom-typography: mat-typography-config($font-family: 'Segoe UI, Ubuntu', $headline: mat-typography-level(32px, 48px, 700), $body-1: mat-typography-level(16px, 24px, 500))
+
+.cdk-overlay-pane
+  width: 280px !important
+.mat-autocomplete-panel
+  max-height: 300px !important
+.mat-form-field-infix
+  border-bottom: 1px solid #404040
+.mat-form-field-placeholder
+  color: #404040
+.mat-option
+  color: #404040 !important
